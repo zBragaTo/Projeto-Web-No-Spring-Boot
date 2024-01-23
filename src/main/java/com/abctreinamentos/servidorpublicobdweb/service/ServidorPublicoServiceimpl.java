@@ -1,5 +1,6 @@
 package com.abctreinamentos.servidorpublicobdweb.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,17 +16,11 @@ public class ServidorPublicoServiceimpl implements ServidorPublicoService{
 	@Autowired
 	private ServidorPublicoRepository servidorRepository;
 	
-	@Autowired
-	public void setServidorPublicoService(ServidorPublicoService servidorService)
-	{
-		this.servidorService = servidorService;
-	}
-	
-	
 	@Override
 	public List<ServidorPublico> listAll()
 	{
-		List<ServidorPublico> servidorespublicos = servidorService.listAll();
+		List<ServidorPublico> servidorespublicos = new ArrayList()<>();
+		servidorRepository.findAll().forEach(servidorespublicos::add);
 	}
 
 	public Optional<ServidorPublico> listByMatricula(long matricula)
@@ -33,20 +28,17 @@ public class ServidorPublicoServiceimpl implements ServidorPublicoService{
 		Optional<ServidorPublico> servidorEncontrado = servidorService.listByMatricula(matricula);
 	}
 
-
 	@Override
 	public void save(ServidorPublico servidor) {
 		// TODO Auto-generated method stub
 		
 	}
 
-
 	@Override
 	public void update(ServidorPublico servidor) {
 		// TODO Auto-generated method stub
 		
 	}
-
 
 	@Override
 	public void delete(long matricula) {

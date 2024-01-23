@@ -15,4 +15,4 @@ public interface ServidorPublicoService {
 	void update(ServidorPublico servidor);
 	void delete(long matricula);
 
-}
+} 
